@@ -4,11 +4,12 @@ library(caret)
 library(rpart)
 # Define server logic required to summarize and view the selected dataset
 # loading the data file and creating the model
-load('sampleTrainingDataSubsetColumns.RData')
-inTrain <<- createDataPartition(y=sampleTrainingDataSubsetColumns$outcome, p=0.7, list=FALSE)
-validTrainDataTrain <<- sampleTrainingDataSubsetColumns[inTrain,]
-validTrainDataTest <<- sampleTrainingDataSubsetColumns[-inTrain,]
-modFitRpart <<- train(outcome~ .,data=sampleTrainingDataSubsetColumns,method="rpart")
+# load('sampleTrainingDataSubsetColumns.RData')
+# inTrain <<- createDataPartition(y=sampleTrainingDataSubsetColumns$outcome, p=0.7, list=FALSE)
+# validTrainDataTrain <<- sampleTrainingDataSubsetColumns[inTrain,]
+# validTrainDataTest <<- sampleTrainingDataSubsetColumns[-inTrain,]
+# modFitRpart <<- train(outcome~ .,data=sampleTrainingDataSubsetColumns,method="rpart")
+load('modFitRpart.model')
 
 shinyServer(
   function(input, output) {
