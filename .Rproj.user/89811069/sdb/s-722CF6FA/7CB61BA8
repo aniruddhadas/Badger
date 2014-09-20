@@ -1,0 +1,16 @@
+{
+    "contents" : "library(shiny)\nshinyUI(pageWithSidebar(\n  headerPanel(\"Example plot\"),\n  sidebarPanel(\n    sliderInput('mu', 'Guess at the mean',value = 70, min = 62, max = 74, step = 0.05,)\n  ),\n  mainPanel(\n    plotOutput('newHist')\n  )\n))\n",
+    "created" : 1411223540572.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4060496188",
+    "id" : "7CB61BA8",
+    "lastKnownWriteTime" : 1410050913,
+    "path" : "~/GitHub/courses/09_DevelopingDataProducts/shiny/graphApp/ui.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

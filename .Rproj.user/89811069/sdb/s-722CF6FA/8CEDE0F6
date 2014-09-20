@@ -1,0 +1,16 @@
+{
+    "contents" : "library(shiny)\nlibrary(UsingR)\ndata(galton)\n\nshinyServer(\n  function(input, output) {\n    output$newHist <- renderPlot({\n      hist(galton$child, xlab='child height', col='lightblue',main='Histogram')\n      mu <- input$mu\n      lines(c(mu, mu), c(0, 200),col=\"red\",lwd=5)\n      mse <- mean((galton$child - mu)^2)\n      text(63, 150, paste(\"mu = \", mu))\n      text(63, 140, paste(\"MSE = \", round(mse, 2)))\n      })\n    \n  }\n)\n",
+    "created" : 1411223556359.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1852670396",
+    "id" : "8CEDE0F6",
+    "lastKnownWriteTime" : 1410050913,
+    "path" : "~/GitHub/courses/09_DevelopingDataProducts/shiny/graphApp/server.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

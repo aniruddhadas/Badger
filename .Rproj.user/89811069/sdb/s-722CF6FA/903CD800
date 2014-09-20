@@ -1,0 +1,16 @@
+{
+    "contents" : "library(shiny)\n\nshinyServer(\n  function(input, output) {\n    x <- reactive({as.numeric(input$applhour)+100})      \n    output$text1 <- renderText({x()      })\n    output$text2 <- renderText({x() + as.numeric(input$text2)})\n  }\n)\n\n# shinyServer(\n#    function(input, output) {\n#        x <- reactive({})      \n#        output$text1 <- renderText({as.numeric(input$text1)+100  })\n#        output$text2 <- renderText({as.numeric(input$text1)+100 + \n#                                        as.numeric(input$text2)})\n#    }\n# )\n",
+    "created" : 1411226494784.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2714943026",
+    "id" : "903CD800",
+    "lastKnownWriteTime" : 1411227398,
+    "path" : "~/GitHub/courses/09_DevelopingDataProducts/shiny2/testApp2/server.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

@@ -1,0 +1,16 @@
+{
+    "contents" : "Badger (Case Success Identifier)\n========================================================\nauthor: Aniruddha Das\ndate: 20 September 2014\n\nData\n========================================================\n\nFor more details on authoring R presentations click the\n**Help** button on the toolbar.\n\n- Bullet 1\n- Bullet 2\n- Bullet 3\n\nMethods\n========================================================\n\n```{r}\nsummary(cars)\n```\n\nFindings\n========================================================\n\n```{r, echo=FALSE}\nplot(cars)\n```\n\nSummary/Next Steps\n========================================================\n\n```{r}\nplot(cars)\n```",
+    "created" : 1411232523748.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3690090742",
+    "id" : "5E140D5",
+    "lastKnownWriteTime" : 1411232881,
+    "path" : "~/GitHub/Badger/badger_presentation.Rpres",
+    "project_path" : "badger_presentation.Rpres",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_presentation"
+}

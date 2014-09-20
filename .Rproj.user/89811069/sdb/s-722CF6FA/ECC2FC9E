@@ -1,0 +1,17 @@
+{
+    "contents" : "#reading in data\nload('rsa911_02to12.RData')\nhead(rsa911, n = 7)\nstr(rsa911)\n#rsa911$outcome <- (rsa911$clsrtype == 3)\nlibrary(caret)\nsampleTestData <- createDataPartition(y=rsa911$clsrtype, p=0.001, list=FALSE)\nsampleTrainingData <- rsa911[sampleTestData,]\ndim(sampleTrainingData)\nsampleTrainingData$outcome <- (sampleTrainingData$clsrtype == 3)\ndim(sampleTrainingData)\nsampleTrainingData$clsrtype <- NULL\n\nhead(sampleTrainingData$outcome)\nstr(sampleTrainingData)\n\nsampleTrainingDataSubsetColumns <- sampleTrainingData[c(\"prevclsr\", \"gender\", \"white\", \"black\", \"aian\", \"asian\", \"nhpi\", \"appleduc\", \"majorimp\", \"applwork\", \"applearn\", \"applhour\", \"outcome\")]\n#sampleTrainingDataSubsetColumns[,1:8] = as.factor(sampleTrainingDataSubsetColumns[,1:8]) \n# a <- lapply(sampleTrainingDataSubsetColumns[1:10], as.factor)\n# a$applearn <- sampleTrainingDataSubsetColumns$applearn\n# a$applhour <- sampleTrainingDataSubsetColumns$applhour\n# a$outcome <- sampleTrainingDataSubsetColumns$outcome\n# \n\nfactorCols <- c(\"prevclsr\",\"gender\",\"white\",\"black\",\"aian\",\"asian\",\"nhpi\",\"appleduc\",\"majorimp\",\"applwork\")\n\nsampleTrainingDataSubsetColumns[,factorCols]<- data.frame(apply(sampleTrainingDataSubsetColumns[factorCols], 2, as.factor))\nstr(sampleTrainingDataSubsetColumns)\nsampleTrainingDataSubsetColumns$outcome <- as.factor(sampleTrainingDataSubsetColumns$outcome)\nsampleTrainingDataSubsetColumns <- na.omit(sampleTrainingDataSubsetColumns)\nlibrary(caret)\ninTrain <- createDataPartition(y=sampleTrainingDataSubsetColumns$outcome, p=0.7, list=FALSE)\nvalidTrainDataTrain <- sampleTrainingDataSubsetColumns[inTrain,]\nvalidTrainDataTest <- sampleTrainingDataSubsetColumns[-inTrain,]\n\nlibrary(randomForest)\n#validTrainDataTrain[,-13]\nmodFitRf <- train(outcome~ .,data=sampleTrainingDataSubsetColumns,method=\"rf\",prox=TRUE)\nmodFitRpart <- train(outcome~ .,data=sampleTrainingDataSubsetColumns,method=\"rpart\")\n\n#plot(modFit$finalModel, uniform=TRUE, main=\"Classification Tree\")\n\nlibrary(rattle)\nfancyRpartPlot(modFitRpart$finalModel)\n\npredict(modFitRpart,newdata=validTrainDataTest)\n\n\n",
+    "created" : 1411178017826.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3251834106",
+    "id" : "ECC2FC9E",
+    "lastKnownWriteTime" : 1411230277,
+    "path" : "~/GitHub/Badger/AdhocDataAnalysis.R",
+    "project_path" : "AdhocDataAnalysis.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

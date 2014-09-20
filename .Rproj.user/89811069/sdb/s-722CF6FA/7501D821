@@ -1,0 +1,17 @@
+{
+    "contents" : "library(shiny)\n\n# Define UI for dataset viewer application\nshinyUI(\n  pageWithSidebar(\n  \n    # Application title\n    headerPanel(\"Case Success Determiner!\"),\n  \n    # Sidebar with controls to provide a caption, select a dataset, and \n    # specify the number of observations to view. Note that changes made\n    # to the caption in the textInput control are updated in the output\n    # area immediately as you type\n    sidebarPanel(\n      selectInput(\"prevclsr\", \"Choose a prevclsr:\", \n                  choices = c(0:8)),\n      \n      selectInput(\"gender\", \"Choose a gender:\", \n                  choices = c(1:2)),\n      \n      selectInput(\"race\", \"Choose a race:\", \n                  choices = c(\"white\", \"black\", \"aian\", \"asian\", \"nhpi\")),\n      \n      selectInput(\"appleduc\", \"Choose a appleduc:\", \n                  choices = c(0:8)),\n      \n      selectInput(\"majorimp\", \"Choose a majorimp:\", \n                  choices = c(0:19)),\n      \n      selectInput(\"applwork\", \"Choose a applwork:\", \n                  choices = c(1, 2, 3, 5, 6, 7, 8, 9, 10, 11)),\n      \n      numericInput(\"applearn\", \"applearn\", 0, min = 0, max = 5000),\n      \n      numericInput(\"applhour\", \"applhour\", 0, min = 0, max = 100)\n    ),\n  \n  \n    # Show the caption, a summary of the dataset and an HTML table with\n    # the requested number of observations\n    mainPanel(\n      plotOutput('newDecisionTree'),\n      \n  #     verbatimTextOutput(\"summary\"), \n  #     \n  #     tableOutput(\"view\"),\n      p('Case Success Result:'),\n      textOutput('result')\n  #     p('Case Success'),\n  #     textOutput('text2'),\n      \n      #plotOutput('newHist')\n    )\n  )\n)",
+    "created" : 1411221852767.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2441552068",
+    "id" : "7501D821",
+    "lastKnownWriteTime" : 1411227616,
+    "path" : "~/GitHub/Badger/ui.R",
+    "project_path" : "ui.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

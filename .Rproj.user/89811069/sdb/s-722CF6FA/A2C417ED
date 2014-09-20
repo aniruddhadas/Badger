@@ -1,0 +1,16 @@
+{
+    "contents" : "---\ntitle: \"Practical Machine Learning Writeup\"\nauthor: \"Aniruddha Das\"\ndate: \"Sunday, August 24, 2014\"\noutput: html_document\n---\n\nRead in the data to identify features that could help with classifying the excercise **classe**.\n```{r}\ngetwd()\nsetwd(\"C:/Users/and/Documents/GitHub/PracticalMachineLearning\")\ndir()\ntrain <- read.csv2(\"pml-training.csv\",sep = \",\")\nhead(train)\n```\n\nseems there are lots of NAs, empty values and #DIV/0! (excel division errors in the data).Lets replace all the bad values with NAs. \n```{r}\ntrain <- read.csv2(\"pml-training.csv\",sep = \",\", na.strings = c(\"\", \"NA\", \"#DIV/0!\") ) \nhead(train)\n```\n\nBased on looking at the data seems there are columns that are not useful for prediction like X, user_name, raw_timestamp_part_1, raw_timestamp_part_2, cvtd_timestamp, new_window and num_window.\n\nSubsetting for relevant features names, removing NA columns and casting all entries as numeric except classe:\n```{r}\nvalidTrainFeatures <- colnames(train[colSums(is.na(train)) == 0])[-(1:7)]\nvalidTrainData <- train[validTrainFeatures]\nhead(validTrainData)\ncomplete <- function(x) {x[,sapply(x, function(y) !any(is.na(y)))] }\nvalidTrainData <- complete(validTrainData)\nfor(i in c(2:ncol(validTrainData)-1)) {validTrainData[,i] = as.numeric(as.character(validTrainData[,i]))}\nstr(validTrainData)\n```\nCreating train and test sets from the valid training data. 70% training and 30% testing.\n```{r}\nlibrary(caret)\ninTrain <- createDataPartition(y=validTrainData$classe, p=0.7, list=FALSE)\nvalidTrainDataTrain <- validTrainData[inTrain,]\nvalidTrainDataTest <- validTrainData[-inTrain,]\n```\n\nCreating the random forest model and testing it on train and test data:\n```{r}\nlibrary(randomForest)\nrandom.forest <- train(validTrainDataTrain[,-53],\n                       validTrainDataTrain$classe,\n                       tuneGrid=data.frame(mtry=3),\n                       trControl=trainControl(method=\"none\")\n                    )\npredictionsTrain <- predict(random.forest, newdata=validTrainDataTrain)\nconfusionMatrix(predictionsTrain,validTrainDataTrain$classe)\n\npredictionsTest <- predict(random.forest, newdata=validTrainDataTest)\nconfusionMatrix(predictionsTest,validTrainDataTest$classe)\n```\nWe get very good Accuracy on the test data as shown above in the test data.",
+    "created" : 1411179308371.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3243784648",
+    "id" : "A2C417ED",
+    "lastKnownWriteTime" : 1408894437,
+    "path" : "~/GitHub/PracticalMachineLearning/PracticalML.Rmd",
+    "project_path" : null,
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_markdown"
+}
