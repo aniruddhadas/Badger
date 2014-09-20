@@ -28,6 +28,8 @@ sampleTrainingDataSubsetColumns[,factorCols]<- data.frame(apply(sampleTrainingDa
 str(sampleTrainingDataSubsetColumns)
 sampleTrainingDataSubsetColumns$outcome <- as.factor(sampleTrainingDataSubsetColumns$outcome)
 sampleTrainingDataSubsetColumns <- na.omit(sampleTrainingDataSubsetColumns)
+save(sampleTrainingDataSubsetColumns, file="sampleTrainingDataSubsetColumns.RData")
+
 library(caret)
 inTrain <- createDataPartition(y=sampleTrainingDataSubsetColumns$outcome, p=0.7, list=FALSE)
 validTrainDataTrain <- sampleTrainingDataSubsetColumns[inTrain,]
