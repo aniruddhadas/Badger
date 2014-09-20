@@ -1,7 +1,8 @@
 library(shiny)
-library(rattle)
 library(caret)
 library(rpart)
+library(rpart.plot)
+library(rattle)
 # Define server logic required to summarize and view the selected dataset
 # loading the data file and creating the model
 # load('sampleTrainingDataSubsetColumns.RData')
