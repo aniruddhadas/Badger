@@ -11,14 +11,14 @@ shinyUI(
     # select a previous closure
     sidebarPanel(
       selectInput("prevclsr", "Choose previous closure:", 
-                  choices = c(0:8)),
+                  choices = c(0:7)),
       # select a gender  
       selectInput("gender", "Choose gender:", 
-                  choices = c(1:2)),
+                  choices = c("male", "female")),
       
       # select a race
       selectInput("race", "Choose race:", 
-                  choices = c("white", "black", "aian", "asian", "nhpi")),
+                  choices = c("White", "African American", "American Indian", "Asian", "Native Hawaiian Pacific Islander")),
       
       # select a education status
       selectInput("appleduc", "Education status at time of application:", 

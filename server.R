@@ -18,16 +18,21 @@ shinyServer(
     # using the model computed using the training dataset.
     f <- function(prevclsr, gender, race, appleduc, majorimp, applwork, applearn, applhour) 
       {
-        if (race=="white") {
-          newRow <- data.frame(prevclsr,gender,white=as.factor(1),black=as.factor(0),aian=as.factor(0),asian=as.factor(0),nhpi=as.factor(0),appleduc,majorimp,applwork,applearn,applhour)  
-        } else if (race=="black") {
-          newRow <- data.frame(prevclsr,gender,white=as.factor(0),black=as.factor(1),aian=as.factor(0),asian=as.factor(0),nhpi=as.factor(0),appleduc,majorimp,applwork,applearn,applhour)
-        } else if (race=="aian") {
-          newRow <- data.frame(prevclsr,gender,white=as.factor(0),black=as.factor(0),aian=as.factor(1),asian=as.factor(0),nhpi=as.factor(0),appleduc,majorimp,applwork,applearn,applhour)
-        } else if (race=="asian") {
-          newRow <- data.frame(prevclsr,gender,white=as.factor(0),black=as.factor(0),aian=as.factor(0),asian=as.factor(1),nhpi=as.factor(0),appleduc,majorimp,applwork,applearn,applhour)
-        } else if (race=="nhpi") {
-          newRow <- data.frame(prevclsr,gender,white=as.factor(0),black=as.factor(0),aian=as.factor(0),asian=as.factor(0),nhpi=as.factor(1),appleduc,majorimp,applwork,applearn,applhour)
+        if(gender=="male") {
+          genderfactor=as.factor(1)
+        } else {
+          genderfactor=as.factor(2)
+        }
+        if (race=="White") {
+          newRow <- data.frame(prevclsr,gender=genderfactor,white=as.factor(1),black=as.factor(0),aian=as.factor(0),asian=as.factor(0),nhpi=as.factor(0),appleduc,majorimp,applwork,applearn,applhour)  
+        } else if (race=="African American") {
+          newRow <- data.frame(prevclsr,gender=genderfactor,white=as.factor(0),black=as.factor(1),aian=as.factor(0),asian=as.factor(0),nhpi=as.factor(0),appleduc,majorimp,applwork,applearn,applhour)
+        } else if (race=="American Indian") {
+          newRow <- data.frame(prevclsr,gender=genderfactor,white=as.factor(0),black=as.factor(0),aian=as.factor(1),asian=as.factor(0),nhpi=as.factor(0),appleduc,majorimp,applwork,applearn,applhour)
+        } else if (race=="Asian") {
+          newRow <- data.frame(prevclsr,gender=genderfactor,white=as.factor(0),black=as.factor(0),aian=as.factor(0),asian=as.factor(1),nhpi=as.factor(0),appleduc,majorimp,applwork,applearn,applhour)
+        } else if (race=="Native Hawaiian Pacific Islander") {
+          newRow <- data.frame(prevclsr,gender=genderfactor,white=as.factor(0),black=as.factor(0),aian=as.factor(0),asian=as.factor(0),nhpi=as.factor(1),appleduc,majorimp,applwork,applearn,applhour)
         }
         
         results <- predict(modFitRpart,newdata=newRow)
