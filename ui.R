@@ -33,7 +33,7 @@ shinyUI(
                   choices = c(1, 2, 3, 5, 6, 7, 8, 9, 10, 11)),
       
       # select earn at application
-      numericInput("applearn", "How much the client is earning at time of application (applearn)?", 0, min = 0, max = 5000),
+      numericInput("applearn", "How much the client is earning at time of application $/hour (applearn)?", 0, min = 0, max = 5000),
       
       # select working hours at application
       numericInput("applhour", "How many hours working at the time of application (applhour)?", 0, min = 0, max = 100)
@@ -48,7 +48,11 @@ shinyUI(
       h3('Case Success Result:'),
       htmlOutput('result'),
       
-      p('Hint: Try changing "How much the client is earning at time of application?" to 500')
+      p('Hint: Try changing "How much the client is earning at time of application $/hour (applearn)?" to 500. 500 means that the applicant was earning $500/hour before starting with the application, if so there is a high chance he will be gainfully employed at the end of the process.'),
+      br(),
+      h3('References'),
+      p('[1]Presentation: http://rpubs.com/aniruddhadas/badger'),
+      p('[2]More Details: https://www2.ed.gov/policy/speced/guid/rsa/pd-04-04.pdf')
     )
   )
 )
