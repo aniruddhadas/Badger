@@ -6,33 +6,32 @@ shinyUI(
   
     # Application title
     headerPanel("Case Success Determiner!"),
-  
-    # Sidebar with controls to provide a caption, select a dataset, and 
-    # specify the number of observations to view. Note that changes made
-    # to the caption in the textInput control are updated in the output
-    # area immediately as you type
+    
+    # Sidebar with controls to provide a caption, 
+    # select a previous closure
+    # 
     sidebarPanel(
-      selectInput("prevclsr", "Choose a prevclsr:", 
+      selectInput("prevclsr", "Choose previous closure:", 
                   choices = c(0:8)),
       
-      selectInput("gender", "Choose a gender:", 
+      selectInput("gender", "Choose gender:", 
                   choices = c(1:2)),
       
-      selectInput("race", "Choose a race:", 
+      selectInput("race", "Choose race:", 
                   choices = c("white", "black", "aian", "asian", "nhpi")),
       
-      selectInput("appleduc", "Choose a appleduc:", 
+      selectInput("appleduc", "Education status at time of application:", 
                   choices = c(0:8)),
       
-      selectInput("majorimp", "Choose a majorimp:", 
+      selectInput("majorimp", "Choose a major impairment:", 
                   choices = c(0:19)),
       
-      selectInput("applwork", "Choose a applwork:", 
+      selectInput("applwork", "Choose work type at time of application:", 
                   choices = c(1, 2, 3, 5, 6, 7, 8, 9, 10, 11)),
       
-      numericInput("applearn", "applearn", 0, min = 0, max = 5000),
+      numericInput("applearn", "How much earned at time of application?", 0, min = 0, max = 5000),
       
-      numericInput("applhour", "applhour", 0, min = 0, max = 100)
+      numericInput("applhour", "How many hours working at the time of application?", 0, min = 0, max = 100)
     ),
   
   

@@ -1,35 +1,48 @@
-Badger (Case Success Identifier)
+Case Success Identifier for Vocational Rehabilitation (VR)
 ========================================================
 author: Aniruddha Das
-date: 20 September 2014
+date: date: `r format(Sys.Date(), format="%B %d %Y")`
 
-Data
+<small> 
+Vocation Rehabilitation: https://www2.ed.gov/policy/speced/guid/rsa/pd-04-04.pdf
+</small>
+
+RSA911 Data
 ========================================================
 
-For more details on authoring R presentations click the
-**Help** button on the toolbar.
+Vocational Rehabilitation (VR) agencies provide support and services to persons with disabilities in the United States.
 
-- Bullet 1
-- Bullet 2
-- Bullet 3
+- Information about state VR agencies
+- Demoggraphici information of clients
+- Socio-economic information for clients for recieving services from VR agencies
+    - Variables for wage, work-states etc. before receiving services
+    - Variable for wage, work status etc. after receiving services
+
+<small> data source: https://rsa.ed.gov/ad-hoc-query.cfm?mode=set-query-options&tbl=vw_911_by_dataset </small>
 
 Methods
 ========================================================
-
-```{r}
-summary(cars)
+- Researchers at ICL, UMass facilitated the data to be used for prediction.
+- Snapshot of a subset of the data
+```{r, echo=FALSE}
+load('sampleTrainingDataSubsetColumns.RData')
+summary(sampleTrainingDataSubsetColumns)
 ```
 
 Findings
 ========================================================
-
+Classification and regression tree used for predicting case outcomes<br>
 ```{r, echo=FALSE}
-plot(cars)
+library(rpart)
+library(rpart.plot)
+library(rattle)
+load('modFitRpart.model')
+fancyRpartPlot(modFitRpart$finalModel)
 ```
 
 Summary/Next Steps
 ========================================================
-
+- Improve the model prediction from 0.681
 ```{r}
-plot(cars)
+modFitRpart$finalModel
 ```
