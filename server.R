@@ -50,7 +50,15 @@ shinyServer(
     #
     #  1) This expression is automatically called to recompute the output 
     #  2) The new caption is pushed back to the browser for re-display
-    output$result <- renderText({x()})
+    output$result <- renderText({
+        ans <- x()
+        str1 <- "Based on the inputs specified and the Classification and regression model above chances of being gainfully employed are "
+        if(ans){
+          str1 <- paste(str1, "<b>", "high", "</b>", "."); 
+        } else {
+          str1 <- paste(str1, "<b>", "low", "</b>", ".");
+        }
+      })
     
     # This is a static display of the graph that was computed using the training data set
     output$newDecisionTree <- renderPlot({
