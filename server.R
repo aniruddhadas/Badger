@@ -24,6 +24,28 @@ shinyServer(
         } else if (prevclsr=="failure") {
           prevclsr=as.factor(0)
         }
+        
+        # This is a hack
+        if(majorimp=="Blindness") {
+          majorimp=as.factor(1)
+        } else if(majorimp=="Hearing Loss, Primary Communication Visual") {
+          majorimp=as.factor(5)
+        } else if (majorimp=="Hearing Loss, Primary Communication Auditory") {
+          majorimp=as.factor(6)
+        }  else {
+          majorimp=as.factor(0)
+        }
+        
+        #, "Extended Employment", 
+        # this is a hack
+        if(applwork=="Employment without Supports in Integrated Setting") {
+          applwork = as.factor(1)
+        } else if(applwork=="Extended Employment") {
+          applwork = as.factor(2)
+        } else if(applwork=="Self-employment (except BEP)") {
+          applwork = as.factor(3)
+        }
+              
         #c("No formal schooling","Elementary education","Secondary education, no high school diploma",
         #"Special education certificate of completion/attendance",
         #"High school graduate or equivalency certificate","Post-secondary education, no degree",
@@ -88,9 +110,9 @@ shinyServer(
     output$result <- renderText({
         ans <- x()
         if(ans){
-          str1 <- paste("<b>", "Based on the model chances are high this will be a success case", "</b>", "."); 
+          str1 <- paste("<b>", "Based on the model chances are high this will be a success case.", "</b>"); 
         } else {
-          str1 <- paste("<b>", "This might not be a great case to work with", "</b>", "!");
+          str1 <- paste("<b>", "This might not be a great case to work with!", "</b>");
         }
       })
     

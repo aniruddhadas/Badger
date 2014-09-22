@@ -26,11 +26,11 @@ shinyUI(
       
       # select major impairment
       selectInput("majorimp", "Choose a major impairment (majorimp):", 
-                  choices = c(0:19)),
+                  choices = c("Blindness", "Hearing Loss, Primary Communication Visual", "Hearing Loss, Primary Communication Auditory", "Other")),
       
       # select application status at work
       selectInput("applwork", "Choose work type at time of application (applwork):", 
-                  choices = c(1, 2, 3, 5, 6, 7, 8, 9, 10, 11)),
+                  choices = c("Employment without Supports in Integrated Setting", "Extended Employment", "Self-employment (except BEP)")),
       
       # select earn at application
       numericInput("applearn", "How much the client is earning at time of application $/hour (applearn)?", 0, min = 0, max = 5000),
