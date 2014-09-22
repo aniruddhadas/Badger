@@ -57,11 +57,10 @@ shinyServer(
     #  2) The new caption is pushed back to the browser for re-display
     output$result <- renderText({
         ans <- x()
-        str1 <- "Based on the inputs specified and the Classification and regression model above chances of being gainfully employed are "
         if(ans){
-          str1 <- paste(str1, "<b>", "high", "</b>", "."); 
+          str1 <- paste("<b>", "Based on the model chances are high this will be a success case", "</b>", "."); 
         } else {
-          str1 <- paste(str1, "<b>", "low", "</b>", ".");
+          str1 <- paste("<b>", "This might not be a great case to work with!", "</b>", ".");
         }
       })
     

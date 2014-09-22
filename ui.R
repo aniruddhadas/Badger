@@ -43,12 +43,11 @@ shinyUI(
     # Show the caption, a summary of the dataset and an HTML table with
     # the requested number of observations
     mainPanel(
-      plotOutput('newDecisionTree'),
-      
       h3('Case Success Result:'),
       htmlOutput('result'),
-      
       p('Hint: Try changing "How much the client is earning at time of application $/hour (applearn)?" to 500. 500 means that the applicant was earning $500/hour before starting with the application, if so there is a high chance he will be gainfully employed at the end of the process.'),
+      
+      plotOutput('newDecisionTree'),
       br(),
       h3('References'),
       p('[1]Presentation: http://rpubs.com/aniruddhadas/badger'),
