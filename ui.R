@@ -11,7 +11,7 @@ shinyUI(
     # select a previous closure
     sidebarPanel(
       selectInput("prevclsr", "Choose previous closure (prevclsr):", 
-                  choices = c(0:7)),
+                  choices = c("success", "failure")),
       # select a gender  
       selectInput("gender", "Choose gender:", 
                   choices = c("male", "female")),
@@ -22,7 +22,7 @@ shinyUI(
       
       # select a education status
       selectInput("appleduc", "Education status at time of application (appleduc):", 
-                  choices = c(0:8)),
+                  choices = c("No formal schooling","Elementary education","Secondary education, no high school diploma","Special education certificate of completion/attendance","High school graduate or equivalency certificate","Post-secondary education, no degree","Associate degree or Vocational/Technical Certificate","Bachelors degree","Masters degree or higher")),
       
       # select major impairment
       selectInput("majorimp", "Choose a major impairment (majorimp):", 

@@ -18,11 +18,41 @@ shinyServer(
     # using the model computed using the training dataset.
     f <- function(prevclsr, gender, race, appleduc, majorimp, applwork, applearn, applhour) 
       {
+        # This is a hack
+        if(prevclsr=="success") {
+          prevclsr=as.factor(3)
+        } else if (prevclsr=="failure") {
+          prevclsr=as.factor(0)
+        }
+        #c("No formal schooling","Elementary education","Secondary education, no high school diploma",
+        #"Special education certificate of completion/attendance",
+        #"High school graduate or equivalency certificate","Post-secondary education, no degree",
+        #"Associate degree or Vocational/Technical Certificate","Bachelors degree",
+        #"Masters degree or higher"))
+        if(appleduc=="No formal schooling") {
+          appleduc=as.factor(0)
+        } else if (appleduc=="Elementary education") {
+          appleduc=as.factor(1)
+        } else if (appleduc=="Secondary education, no high school diploma") {
+          appleduc=as.factor(2)
+        } else if (appleduc=="Special education certificate of completion/attendance") {
+          appleduc=as.factor(3)
+        } else if (appleduc=="Post-secondary education, no degree") {
+          appleduc=as.factor(4)
+        } else if (appleduc=="Associate degree or Vocational/Technical Certificate") {
+          appleduc=as.factor(5)
+        } else if (appleduc=="Bachelors degree") {
+          appleduc=as.factor(6)
+        } else if (appleduc=="Masters degree or higher") {
+          appleduc=as.factor(7)
+        }
+        
         if(gender=="male") {
           genderfactor=as.factor(1)
         } else {
           genderfactor=as.factor(2)
         }
+        
         if (race=="White") {
           newRow <- data.frame(prevclsr,gender=genderfactor,white=as.factor(1),black=as.factor(0),aian=as.factor(0),asian=as.factor(0),nhpi=as.factor(0),appleduc,majorimp,applwork,applearn,applhour)  
         } else if (race=="African American") {
