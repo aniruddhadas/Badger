@@ -60,7 +60,7 @@ shinyServer(
         if(ans){
           str1 <- paste("<b>", "Based on the model chances are high this will be a success case", "</b>", "."); 
         } else {
-          str1 <- paste("<b>", "This might not be a great case to work with!", "</b>", ".");
+          str1 <- paste("<b>", "This might not be a great case to work with", "</b>", "!");
         }
       })
     
