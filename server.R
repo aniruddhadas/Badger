@@ -19,18 +19,18 @@ shinyServer(
     f <- function(prevclsr, gender, race, appleduc, majorimp, applwork, applearn, applhour) 
       {
         # This is a hack
-        if(prevclsr=="success") {
+        if(prevclsr=="3 - success") {
           prevclsr=as.factor(3)
-        } else if (prevclsr=="failure") {
+        } else if (prevclsr=="0 - failure") {
           prevclsr=as.factor(0)
         }
         
         # This is a hack
-        if(majorimp=="Blindness") {
+        if(majorimp=="1 - Blindness") {
           majorimp=as.factor(1)
-        } else if(majorimp=="Hearing Loss, Primary Communication Visual") {
+        } else if(majorimp=="5 - Hearing Loss, Primary Communication Visual") {
           majorimp=as.factor(5)
-        } else if (majorimp=="Hearing Loss, Primary Communication Auditory") {
+        } else if (majorimp=="6 - Hearing Loss, Primary Communication Auditory") {
           majorimp=as.factor(6)
         }  else {
           majorimp=as.factor(0)

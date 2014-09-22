@@ -11,7 +11,7 @@ shinyUI(
     # select a previous closure
     sidebarPanel(
       selectInput("prevclsr", "Choose previous closure (prevclsr):", 
-                  choices = c("success", "failure")),
+                  choices = c("3 - success", "0 - failure")),
       # select a gender  
       selectInput("gender", "Choose gender:", 
                   choices = c("male", "female")),
@@ -26,7 +26,7 @@ shinyUI(
       
       # select major impairment
       selectInput("majorimp", "Choose a major impairment (majorimp):", 
-                  choices = c("Blindness", "Hearing Loss, Primary Communication Visual", "Hearing Loss, Primary Communication Auditory", "Other")),
+                  choices = c("1 - Blindness", "5 - Hearing Loss, Primary Communication Visual", "6 - Hearing Loss, Primary Communication Auditory", "Other")),
       
       # select application status at work
       selectInput("applwork", "Choose work type at time of application (applwork):", 
